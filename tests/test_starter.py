@@ -27,17 +27,17 @@ def test_ticket_price_child_partition():
     assert ticket_price(36) == 100
     assert ticket_price(110) == 60
 
-    with pytest.raises(ValueError):
-        ticket_price(-10)
-    with pytest.raises(ValueError):
-        ticket_price(1000)
-
 # TODO: add one test per remaining partition
 #   - adult   (for example 30) -> 100
 #   - senior  (for example 70) -> 60
 #   - age < 0   -> raises ValueError   (hint: pytest.raises)
 #   - age > 120 -> raises ValueError
 
+    # invalid
+    with pytest.raises(ValueError):
+        ticket_price(-10)
+    with pytest.raises(ValueError):
+        ticket_price(1000)
 
 # ---------------------------------------------------------------------------
 # Part B. Boundary value analysis for ticket_price.
@@ -48,12 +48,23 @@ def test_ticket_price_lower_boundaries():
     assert ticket_price(0) == 50
     assert ticket_price(12) == 50
     assert ticket_price(13) == 100
+
     # TODO: add 64 -> 100, 65 -> 60, 120 -> 60
+    # new tests
+    assert ticket_price(0) == 50
+    assert ticket_price(12) == 50
+    assert ticket_price(13) == 100
+    assert ticket_price(64) == 100
+    assert ticket_price(65) == 60
+    assert ticket_price(120) == 60
 
 # TODO: write a test that checks ticket_price(-1) and ticket_price(121)
-#       each raise ValueError.
+#       each raise ValueError. 
 
-
+    with pytest.raises(ValueError):
+        ticket_price(-1)
+    with pytest.raises(ValueError):
+        ticket_price(121)
 # ---------------------------------------------------------------------------
 # Part C. Decision table for discount.
 # Conditions: is_member (Y/N) and order_total >= 1000 (Y/N).
@@ -67,6 +78,9 @@ def test_discount_member_large_order():
 #   - non-member, order >= 1000     -> 5
 #   - non-member, order < 1000      -> 0
 
+    assert discount(True, 999) == 10
+    assert discount(False, 9800) == 5
+    assert discount(False, 1) == 0
 
 # ---------------------------------------------------------------------------
 # Part D. Branch coverage for bonus.
