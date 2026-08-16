@@ -24,6 +24,13 @@ from src.turnstile import Turnstile
 # ---------------------------------------------------------------------------
 def test_ticket_price_child_partition():
     assert ticket_price(8) == 50
+    assert ticket_price(36) == 100
+    assert ticket_price(110) == 60
+
+    with pytest.raises(ValueError):
+        ticket_price(-10)
+    with pytest.raises(ValueError):
+        ticket_price(1000)
 
 # TODO: add one test per remaining partition
 #   - adult   (for example 30) -> 100
