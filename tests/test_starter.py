@@ -94,7 +94,9 @@ def test_bonus_high_score_member():
 # TODO: add a test that takes the FALSE side of both decisions,
 #       for example bonus(50, False) == 0
 
-
+    assert bonus(95, False) == 100
+    assert bonus(85, False) == 0
+    
 # ---------------------------------------------------------------------------
 # Part E. State transition testing for Turnstile.
 # Test the two valid transitions and the two ignored events.
