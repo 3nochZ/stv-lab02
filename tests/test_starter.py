@@ -82,6 +82,10 @@ def test_discount_member_large_order():
     assert discount(False, 9800) == 5
     assert discount(False, 1) == 0
 
+    #for full test coverage
+    with pytest.raises(ValueError):
+        discount(True, -1)
+
 # ---------------------------------------------------------------------------
 # Part D. Branch coverage for bonus.
 # Write the smallest set of tests that reaches 100% BRANCH coverage.
@@ -111,3 +115,17 @@ def test_turnstile_coin_unlocks():
 #   - unlocked + push -> locked
 #   - locked   + push -> still locked (ignored)
 #   - unlocked + coin -> still unlocked (ignored)
+
+    t.push()
+    assert t.state == "locked"
+
+    t.push()
+    assert t.state == "locked"
+
+    #unlock first
+    t.coin()
+    assert t.state == "unlocked"
+
+    #then test ignored case
+    t.coin()
+    assert t.state == "unlocked"
