@@ -19,7 +19,7 @@ class CheckoutTest {
         Checkout checkout = new Checkout(stub);
         int total = checkout.total(List.of("pen", "book", "bag"));
         // TODO B: three items at 10 each. Replace 0 with the expected total.
-        assertEquals(0, total);
+        assertEquals(30, total);
     }
 
     // Part C. A FAKE: the in-memory price list, used as an integration test.
