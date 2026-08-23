@@ -41,6 +41,7 @@ class CheckoutTest {
         Checkout checkout = new Checkout(spy);
         checkout.total(List.of("pen", "book", "bag"));
         // TODO D: assert that spy.callCount() equals the number of items.
+        assertEquals(3, spy.callCount());
     }
 
     /** A simple spy: a PriceList that counts how many times it was called. */
