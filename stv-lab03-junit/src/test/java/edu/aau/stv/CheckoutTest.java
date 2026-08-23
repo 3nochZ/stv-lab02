@@ -30,6 +30,7 @@ class CheckoutTest {
         prices.setPrice("book", 40);
         Checkout checkout = new Checkout(prices);
         // TODO C: assert the total of a basket containing "pen" and "book".
+        assertEquals(45, checkout.total(List.of("pen", "book")));
     }
 
     // Part D. A SPY records how it was called so the test can inspect it.
